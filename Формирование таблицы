@@ -1,0 +1,30 @@
+private void getTableRecords(ArrayList<Object[]> record, String[] reportFields) {
+        int maxLength = 0;
+        for (int i = 0; i < record.size(); i++) {
+            String[] arrDate = (String[]) record.get(i);
+// Находим максимальную длину элемента в массиве
+            for (String element : arrDate) {
+                if (element != null && element.length() > maxLength) {
+                    maxLength = element.length();
+                }
+            }
+        }
+
+// Выводим имена столбцов в виде таблицы
+        for (String element : reportFields) {
+            System.out.printf("| %-" + (maxLength + 2) + "s", element);
+        }
+        System.out.print("|");
+        System.out.println();
+
+
+        for (int i = 0; i < record.size(); i++) {
+            String[] arrDate = (String[]) record.get(i);
+// Выводим элементы массива в виде таблицы
+            for (String element : arrDate) {
+                System.out.printf("| %-" + (maxLength + 2) + "s", element);
+            }
+            System.out.print("|");
+            System.out.println();
+        }
+    }
